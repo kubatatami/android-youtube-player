@@ -23,7 +23,7 @@ function YouTubePlayer(communicationConstants, communicationChannel) {
             width: '100%',
             
             events: {
-                onReady: () => YouTubePlayerBridge.sendReady(),
+                onReady: () => onReady(),
                 onStateChange: event  => sendPlayerStateChange(event.data),
                 onPlaybackQualityChange: event => YouTubePlayerBridge.sendPlaybackQualityChange(event.data),
                 onPlaybackRateChange: event => YouTubePlayerBridge.sendPlaybackRateChange(event.data),
@@ -42,6 +42,14 @@ function YouTubePlayer(communicationConstants, communicationChannel) {
                 iv_load_policy: 3
             }            
         })
+    }
+
+
+    function onReady() {
+        YouTubePlayerBridge.sendReady()
+        document.getElementsByClassName('ytp-player-content')[0].onclick function (event) {
+             YouTubePlayerBridge.onPlayerClick()
+        };
     }
 
     function restoreCommunication() {

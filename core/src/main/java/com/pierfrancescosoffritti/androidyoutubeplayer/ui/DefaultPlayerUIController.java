@@ -496,6 +496,11 @@ public class DefaultPlayerUIController implements PlayerUIController, YouTubePla
         seekBarTouchStarted = false;
     }
 
+    @Override
+    public void onPlayerClick() {
+
+    }
+
     private void resetUI() {
         seekBar.setProgress(0);
         seekBar.setMax(0);

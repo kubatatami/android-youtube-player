@@ -60,4 +60,6 @@ public interface YouTubePlayerListener {
      * @param videoId the id of the video being played
      */
     void onVideoId(@NonNull String videoId);
+
+    void onPlayerClick();
 }

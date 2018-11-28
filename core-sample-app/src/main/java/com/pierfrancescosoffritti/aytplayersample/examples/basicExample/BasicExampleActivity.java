@@ -78,6 +78,11 @@ public class BasicExampleActivity extends AppCompatActivity {
                 public void onReady() {
                     loadVideo(youTubePlayer, videoIds[0]);
                 }
+
+                @Override
+                public void onPlayerClick() {
+                    Log.i("player", "onPlayerClick");
+                }
             });
 
             addFullScreenListenerToPlayer(youTubePlayer);

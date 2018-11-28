@@ -103,6 +103,17 @@ public class YouTubePlayerBridge {
     }
 
     @JavascriptInterface
+    public void onPlayerClick() {
+        mainThreadHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                for (YouTubePlayerListener listener : youTubePlayer.getListeners())
+                    listener.onPlayerClick();
+            }
+        });
+    }
+
+    @JavascriptInterface
     public void sendPlaybackRateChange(final String rate) {
 
         final PlayerConstants.PlaybackRate playbackRate = parsePlaybackRate(rate);
