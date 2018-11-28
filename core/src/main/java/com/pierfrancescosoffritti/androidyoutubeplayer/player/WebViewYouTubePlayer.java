@@ -156,6 +156,7 @@ class WebViewYouTubePlayer extends WebView implements YouTubePlayer, YouTubePlay
         settings.setJavaScriptEnabled(true);
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         settings.setMediaPlaybackRequiresUserGesture(false);
+        settings.setUserAgentString("Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.4) Gecko/20100101 Firefox/4.0");
 
         this.addJavascriptInterface(new YouTubePlayerBridge(this), "YouTubePlayerBridge");
         this.loadDataWithBaseURL("https://www.youtube.com", readYouTubePlayerHTMLFromFile(), "text/html", "utf-8", null);
