@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.webkit.WebResourceRequest;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -402,6 +403,11 @@ public class DefaultPlayerUIController implements PlayerUIController, YouTubePla
                 if(showPlayPauseButton) playPauseButton.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    @Override
+    public boolean shouldOverrideUrlLoading(WebResourceRequest request) {
+        return false;
     }
 
     private void updateControlsState(PlayerConstants.PlayerState state) {

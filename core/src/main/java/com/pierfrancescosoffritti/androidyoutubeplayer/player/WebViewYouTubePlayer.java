@@ -9,8 +9,10 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.R;
 import com.pierfrancescosoffritti.androidyoutubeplayer.player.listeners.YouTubePlayerInitListener;
@@ -170,6 +172,17 @@ class WebViewYouTubePlayer extends WebView implements YouTubePlayer, YouTubePlay
                     return Bitmap.createBitmap(1, 1, Bitmap.Config.RGB_565);
                 else
                     return result;
+            }
+        });
+        this.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                for (YouTubePlayerListener listener : youTubePlayerListeners) {
+                    if (listener.shouldOverrideUrlLoading(request)) {
+                        return true;
+                    }
+                }
+                return super.shouldOverrideUrlLoading(view, request);
             }
         });
     }

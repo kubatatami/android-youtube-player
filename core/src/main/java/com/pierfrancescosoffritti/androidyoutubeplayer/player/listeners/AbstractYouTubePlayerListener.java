@@ -1,6 +1,7 @@
 package com.pierfrancescosoffritti.androidyoutubeplayer.player.listeners;
 
 import android.support.annotation.NonNull;
+import android.webkit.WebResourceRequest;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.player.PlayerConstants;
 
@@ -18,4 +19,7 @@ public abstract class AbstractYouTubePlayerListener implements YouTubePlayerList
     @Override public void onVideoDuration(float duration) { }
     @Override public void onVideoLoadedFraction(float fraction) { }
     @Override public void onVideoId(@NonNull String videoId) { }
+    @Override public boolean shouldOverrideUrlLoading(WebResourceRequest request) {
+        return false;
+    }
 }
