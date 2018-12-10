@@ -1,7 +1,6 @@
 package com.pierfrancescosoffritti.androidyoutubeplayer.player.listeners;
 
 import android.support.annotation.NonNull;
-import android.webkit.WebResourceRequest;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.player.PlayerConstants;
 
@@ -70,5 +69,5 @@ public interface YouTubePlayerListener {
      */
     void onVideoId(@NonNull String videoId);
 
-    boolean shouldOverrideUrlLoading(WebResourceRequest request);
+    boolean shouldOverrideUrlLoading(String url);
 }

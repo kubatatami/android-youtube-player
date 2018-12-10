@@ -178,11 +178,21 @@ class WebViewYouTubePlayer extends WebView implements YouTubePlayer, YouTubePlay
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 for (YouTubePlayerListener listener : youTubePlayerListeners) {
-                    if (listener.shouldOverrideUrlLoading(request)) {
+                    if (listener.shouldOverrideUrlLoading(request.getUrl().getPath())) {
                         return true;
                     }
                 }
                 return super.shouldOverrideUrlLoading(view, request);
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                for (YouTubePlayerListener listener : youTubePlayerListeners) {
+                    if (listener.shouldOverrideUrlLoading(url)) {
+                        return true;
+                    }
+                }
+                return super.shouldOverrideUrlLoading(view, url);
             }
         });
     }
