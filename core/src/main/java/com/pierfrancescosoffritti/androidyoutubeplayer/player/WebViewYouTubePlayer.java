@@ -178,7 +178,7 @@ class WebViewYouTubePlayer extends WebView implements YouTubePlayer, YouTubePlay
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 for (YouTubePlayerListener listener : youTubePlayerListeners) {
-                    if (listener.shouldOverrideUrlLoading(request.getUrl().getPath())) {
+                    if (listener.shouldOverrideUrlLoading(request.getUrl().toString())) {
                         return true;
                     }
                 }
